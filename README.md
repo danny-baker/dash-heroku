@@ -1,5 +1,5 @@
 # dash-heroku
-A running starter pack for deploying a Plotly Dash app on Heroku (with pands, numpy and matplotlib ready to go)
+A running starter pack for deploying a Plotly Dash app on Heroku with support for hosting static files, such as images (a common pain point).
 <br><br>
 
 ## Instructions
