@@ -76,7 +76,7 @@ If you make major changes to file structure in your project, you may need to cre
 Just be aware that you may not be able to use the very latest packages. I think Heroku has to add special support for this so their packages can sometimes trail the latest ones you may be running on your local machine. You will see errors if this happens though so it will be obvious when you try to build and deploy. Just watch the console.
 
 **If your build succeeds but you get 'APPLICATION ERROR' in the Browser** <br>
-This is highly annoying, but it means something when wrong after the build, when the Gunicorn webserver tried to bring up your app. To view what is going on, you can see build logs in the Heroku web dashboard (by logging in), or the most easy way is to view the log tail from the console:
+This is highly annoying, but it means something went wrong after the build, when the Gunicorn webserver tried to bring up your app. To view what is going on, you can see build logs in the Heroku web dashboard (by logging in), or the most easy way is to view the live log tail from the console. This will show you the dyno web process trying to come up. And if they crash you can see what has gone wrong.
 
 `heroku logs --tail`
 
