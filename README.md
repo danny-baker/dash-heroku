@@ -2,6 +2,9 @@
 A running starter pack for deploying a Plotly Dash app on Heroku with support for hosting static files, such as images (a common pain point).
 <br><br>
 
+
+![alt text](static/screenshot.png)
+
 ## Instructions
 
 A full step-by-step guide is provided below to help you get your first Heroku app live. 
