@@ -10,7 +10,7 @@ This app can be viewed live on Heroku infrastructure at [https://secret-scrublan
 ## Instructions
 
 A full step-by-step guide is provided below to help you get your first Heroku app live. 
-If you are a first-timer on Heroku, I suggest you get this starter app running on Heroku first, then you can adapt it to suite by copy-paste your Dash app code across etc. 
+If you are a first-timer on Heroku, I suggest you get this starter app running on Heroku first, then you can adapt it to suit your needs by copy-pasting your locally running Dash app code across etc. 
 Heroku also has a concise guide for [getting started on Python](https://devcenter.heroku.com/articles/getting-started-with-python) which is a useful reference
 <br><br>
 
