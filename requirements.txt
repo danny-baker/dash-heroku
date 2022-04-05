@@ -1,7 +1,6 @@
-#latest @ Feb 2022
 dash==1.18.1 #Dash 2.0 problematic and unneeded. Still problematic on firefox on linux.
 pandas==1.4.1
-python-dotenv==0.19.2
+python-dotenv==0.19.2 #you will need this if you want to read in environmental variables from the Heroku Dyno 'operating system'
 matplotlib==3.5.1
 gunicorn==20.0.4
 dash-extensions==0.0.58 #Download features
