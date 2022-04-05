@@ -1,5 +1,5 @@
 # dash-heroku
-A starter pack for deploying a Plotly Dash app on Heroku
+A running starter pack for deploying a Plotly Dash app on Heroku (with pands, numpy and matplotlib ready to go)
 <br><br>
 
 ## Instructions
@@ -69,8 +69,13 @@ Copy paste the URL from your console output into a browser, and with a few shake
 **Sometimes you may need to create a new Heroku app** <br>
 If you make major changes to file structure in your project, you may need to create a new Heroku app with `heroku create` and then `git push heroku main`. This can be annoying but it's only one extra step. I found that once my file structure was stable, if I was just changing code within an existing file, to deploy a new version just ensure you update your remote repo on github i.e. `git push origin main` FIRST. When your remote repo is fully up to date with the latest changes, then you can redeploy to Heroku really easily with a simple `git push heroku main`
 
+**Heroku sometimes might not support the latest python modules** <br>
+Just be aware that you may not be able to use the very latest packages. I think Heroku has to add special support for this so their packages can sometimes trail the latest ones you may be running on your local machine. You will see errors if this happens though so it will be obvious when you try to build and deploy. Just watch the console.
 
+**If your build succeeds but you get 'APPLICATION ERROR' in the Browser** <br>
+This is highly annoying, but it means something when wrong after the build, when the Gunicorn webserver tried to bring up your app. To view what is going on, you can see build logs in the Heroku web dashboard (by logging in), or the most easy way is to view the log tail from the console:
 
+`heroku logs --tail`
 
 
 
