@@ -5,6 +5,8 @@ A running starter pack for deploying a Plotly Dash app on Heroku with support fo
 
 ![alt text](static/screenshot.png)
 
+This app can be viewed live on Heroku infrastructure at [https://secret-scrubland-35610.herokuapp.com/](https://secret-scrubland-35610.herokuapp.com/)
+
 ## Instructions
 
 A full step-by-step guide is provided below to help you get your first Heroku app live. 
@@ -63,8 +65,8 @@ You should begin to see a bunch of console output in the terminal as Heroku depl
 
 ## 8. View your running public app in a browser!
 
-If the build succeeds, you will be given a URL at the end that might look something like `https://fierce-reaches-07036.herokuapp.com/` (not a live url). 
-Copy paste the URL from your console output into a browser, and with a few shakes of fairy dust, your app should be live :)
+If the build succeeds, you will be given a URL at the end that might look something like [https://secret-scrubland-35610.herokuapp.com/](https://secret-scrubland-35610.herokuapp.com/) (this is live so you can see the app deployed). 
+Copy paste the URL from your OWN console output into a browser, and with a few shakes of fairy dust, your app should be live :)
 <br><br>
 
 # Important Notes
