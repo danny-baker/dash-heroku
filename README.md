@@ -52,6 +52,7 @@ From your terminal window, login to Heroku CLI. This will open a browser window 
 Once done, return to your terminal and it should say 'Logged in as .... blah' (GOOD)
 
 `heroku login`
+<br><br>
 
 ## 6. Create a Heroku app linked to your Dash app
 
@@ -59,13 +60,21 @@ Now we must create a Heroku app that will magically link to your Dash app. ENSUR
 
 `heroku create`
 
+The above command will create your heroku app with a special unique name on the Heroku infrastructure. This name will be part of the public URL that gets created for your live app on the Heroku subdomain. So if you want a custom name that is a bit more intelligible, you can specify a name, but note Heroku will give an error if that name is already taken on their subdomain (by another Heroku user). So you may need to make it highly specific. 
+
+`heroku create youruniqueappname`
+
+You may need to try a few different options to find a unique name, but once done, your public URL will be prettier and easier to remember.
+<br><br>
+
 ## 7. Deploy your app on Heroku
 
 We are ready for the magic to begin. We will now do a Git push command to your remote Heroku app repository (which lives behind the scenes) and this will trigger a build of your Heroku app!
 
 `git push heroku main`
 
-You should begin to see a bunch of console output in the terminal as Heroku deploys your app. It should work fine on this repo, but as you add your own code in, be ready to watch for errors. 
+You should begin to see a bunch of console output in the terminal as Heroku deploys your app. It should work fine on this repo, but as you add your own code in, be ready to watch for errors.
+<br><br> 
 
 ## 8. View your running public app in a browser!
 
