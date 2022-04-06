@@ -20,7 +20,7 @@ It's a good idea to check you can get this app running on your local webserver b
 Setup your virtualenv (or don't) and ensure you have all the modules installed before running the app. 
 
 **Getting the repo to your local machine** <br>
-If you are  new to Github and not familiar with cloning, SSH and all that jazz, you can all just download a zip file of this entire repo like a normal internet download. So that is fine to do aswell. Basically get a copy of this repo to your local machine as step 1. Later on when you want to make changes to your repo, you will need to use Git commands and have ssh setup, or you can use the [Github desktop](https://desktop.github.com/) application, which is really nice on Windows and Mac.
+If you are  new to Github and not familiar with cloning, SSH and all that jazz, you can all just download a zip file of this entire repo like a normal internet download. So that is fine to do aswell. Basically get a copy of this repo to your local machine as step 1. (Hit the green 'code' button in the top right on Github to see the options for cloning or downloading this repo). Later on when you want to make changes to your repo, you will need to use Git commands and have ssh setup, or you can use the [Github desktop](https://desktop.github.com/) application, which is really nice on Windows and Mac.
 
 **Install modules from the requirements.txt** <br>
 You should be able to do this with pip3 or conda from a terminal in the project root folder
