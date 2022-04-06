@@ -26,7 +26,7 @@ def create_dash_layout(app):
     # Header
     header = html.Div([html.Br(), dcc.Markdown(""" # Hi. I'm your Dash app."""), html.Br()])
     
-    # Body (i.e. the map centrepiece, with loaders to overlay ontop)
+    # Body 
     body = html.Div([dcc.Markdown(""" ## I'm ready to serve static files on Heroku. Just look at this! """), html.Br(), html.Img(src='charlie.png')])
 
     # Footer
