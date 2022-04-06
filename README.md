@@ -54,9 +54,9 @@ Once done, return to your terminal and it should say 'Logged in as .... blah' (G
 `heroku login`
 <br><br>
 
-## 6. Create a Heroku app linked to your Dash app
+## 6. Create a Heroku app linked to this Dash app
 
-Now we must create a Heroku app that will magically link to your Dash app. ENSURE YOU ARE IN YOUR DASH PROJECT ROOT FOLDER IN A TERMINAL. Heroku docs on this step [here](https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app).
+Now we must create a Heroku app that will magically link to your Dash app. ENSURE YOU ARE IN THIS DASH PROJECT ROOT FOLDER IN A TERMINAL. Heroku docs on this step [here](https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app).
 
 `heroku create`
 
