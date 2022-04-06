@@ -17,9 +17,13 @@ Heroku also has a concise guide for [getting started on Python](https://devcente
 ## 1. Clone this repo to your local machine and install modules
 
 It's a good idea to check you can get this app running on your local webserver before attempting to deploy on Heroku. So let's do that.
-Setup your virtualenv (or don't) and ensure you have all the modules installed before running the app.
+Setup your virtualenv (or don't) and ensure you have all the modules installed before running the app. 
 
-You should be able to do this with pip3 or conda install from a terminal in your project root folder
+**Getting the repo to your local machine** <br>
+If you are  new to Github and not familiar with cloning, SSH and all that jazz, you can all just download a zip file of this entire repo like a normal internet download. So that is fine to do aswell. Basically get a copy of this repo to your local machine as step 1.
+
+**Install modules from your requirements.txt** <br>
+You should be able to do this with pip3 or conda from a terminal in your project root folder
 
 `pip3 install -r requirements.txt` <br>
 `conda install --file requirements.txt` (if you are using Anaconda)
