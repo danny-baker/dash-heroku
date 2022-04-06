@@ -11,7 +11,7 @@ This app can be viewed live on Heroku infrastructure at [https://secret-scrublan
 
 A full step-by-step guide is provided below to help you get your first Heroku app live. 
 If you are a first-timer on Heroku, I suggest you get this starter app running on Heroku first, then you can adapt it to suit your needs by copy-pasting your locally running Dash app code across etc. 
-Heroku also has a concise guide for [getting started on Python](https://devcenter.heroku.com/articles/getting-started-with-python) which is a useful reference
+Heroku also has a concise guide for [getting started on Python](https://devcenter.heroku.com/articles/getting-started-with-python) which is a useful reference.
 <br><br>
 
 ## 1. Clone this repo to your local machine and install modules
@@ -61,7 +61,7 @@ We are ready for the magic to begin. We will now do a Git push command to your r
 
 `git push heroku main`
 
-You should begin to see a bunch of console output in the terminal as Heroku deploys your app. It should work fine on this repo, but as you add your own code in, be readoy to watch for errors. 
+You should begin to see a bunch of console output in the terminal as Heroku deploys your app. It should work fine on this repo, but as you add your own code in, be ready to watch for errors. 
 
 ## 8. View your running public app in a browser!
 
