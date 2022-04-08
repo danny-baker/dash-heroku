@@ -8,8 +8,14 @@ import matplotlib as mpl
 import gunicorn                     #whilst your local machine's webserver doesn't need this, Heroku's linux webserver (i.e. dyno) does
 from whitenoise import WhiteNoise   #for serving static files on Heroku
 
-# Instantiate dash app
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY] ) 
+# my header
+import plotly.express as px
+
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+## Instantiate dash app
+# app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY]) 
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 # Define the underlying flask app (Used by gunicorn webserver in Heroku production deployment)
 server = app.server 
@@ -17,52 +23,30 @@ server = app.server
 # Enable Whitenoise for serving static files from Heroku (the /static folder is seen as root by Heroku) 
 server.wsgi_app = WhiteNoise(server.wsgi_app, root='static/') 
 
-# Define Dash layout
-def create_dash_layout(app):
+# assume you have a "long-form" data frame
+# see https://plotly.com/python/px-arguments/ for more options
+df = pd.DataFrame({
+    "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
+    "Amount": [4, 1, 2, 2, 4, 5],
+    "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
+})
 
-    # Set browser tab title
-    app.title = "Your app title" #browser tab
-    
-    # Header
-    header = html.Div([html.Br(), dcc.Markdown(""" # Hi. I'm your Dash app."""), html.Br()])
-    
-    # Body 
-    body = html.Div([dcc.Markdown(""" ## I'm ready to serve static files on Heroku. Just look at this! """), html.Br(), html.Img(src='charlie.png')])
+fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
 
-    # Footer
-    footer = html.Div([html.Br(), html.Br(), dcc.Markdown(""" ### Built with ![Image](heart.png) in Python using [Dash](https://plotly.com/dash/)""")])
-    
-    # Assemble dash layout 
-    app.layout = html.Div([header, body, footer])
+app.layout = html.Div(children=[
+    html.H1(children='Hello Dash'),#'<h1> this is a header </h1>'
+    #
+    # html.Div(children='''
+    #     Dash: A web application framework for Python.
+    # '''),
 
-    return app
+    dcc.Graph(
+        id='example-graph',
+        figure=fig
+    )
+])
 
-# Construct the dash layout
-create_dash_layout(app)
-
-# Run flask app
+# Run dash app
 if __name__ == "__main__":
     app.run_server(debug=False, host='0.0.0.0', port=8050)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
