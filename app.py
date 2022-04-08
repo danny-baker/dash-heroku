@@ -23,28 +23,84 @@ server = app.server
 # Enable Whitenoise for serving static files from Heroku (the /static folder is seen as root by Heroku) 
 server.wsgi_app = WhiteNoise(server.wsgi_app, root='static/') 
 
-# assume you have a "long-form" data frame
-# see https://plotly.com/python/px-arguments/ for more options
-df = pd.DataFrame({
-    "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
-    "Amount": [4, 1, 2, 2, 4, 5],
-    "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
-})
+# read data
+df_country = pd.read_csv("https://raw.githubusercontent.com/smbillah/ist526/main/gapminder.csv")
 
-fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
+app.layout = html.Div([
+    # first row: header
+  html.H4('A Sample Dashboard'),
 
-app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),#'<h1> this is a header </h1>'
-    #
-    # html.Div(children='''
-    #     Dash: A web application framework for Python.
-    # '''),
+  # second row: <scratter-plot + slider> <empty> <debug> 
+  html.Div([
+            
+    # scratter plot                      
+    html.Div([
+              
+      # add scatter plot
+      dcc.Graph(
+        id='scatter-graph',
+        figure=None # we'll create one inside update_figure function
+      ),
 
-    dcc.Graph(
-        id='example-graph',
-        figure=fig
-    )
+      # add slider
+      dcc.Slider(
+        id='year-slider',
+        min=df_country['year'].min(),
+        max=df_country['year'].max(),
+        value=df_country['year'].min(),
+        marks={str(year): str(year) for year in df_country['year'].unique()},
+        step=None
+      )
+    ], className = 'six columns'),   
+
+    html.Div([
+      html.H3('Debug'),
+      #html.Br(),
+      html.P(id='output_text_1', children='Total:'),
+      html.P(id='output_text_2', children='Details:'),
+      html.P(id='output_text_3', children='Conclusion:')
+    ], className = 'six columns')
+  ], className = 'row')    
 ])
+
+# add callback for input. Note that we have two output: one for the figure, and another for debugging. We'll display input parameter in an html.P(id='output_text_1)
+@app.callback(
+  Output('scatter-graph', 'figure'),
+  Output('output_text_1', 'children'), #for debugging purpose
+  Input('year-slider', 'value')
+)
+
+
+# update graph
+def update_figure(selected_year, asd):
+
+  # put the input parameter in debug_params variable
+  debug_params ='Input: {0}'.format(selected_year)
+
+  # filter data frame based on selected_year. Note that the value of selected_year is coming from the slider
+  filtered_df = df_country[df_country.year == selected_year]
+  
+  # note that this fig is the same as HW5.Q2(a) 
+  fig_scatter = px.scatter(
+    data_frame = filtered_df, 
+    x="gdpPercap",         # gdp per capita
+    y="lifeExp",           # life expectancy  
+    size="pop",            # population
+    color="continent",     # group/label
+    hover_name="country",
+    log_x=True, 
+    size_max=55, 
+    range_x=[100,100000], 
+    range_y=[25,90],
+    title= "GDP Per Captia vs Life Expectancy of Countries",     
+  )  
+
+  # fig_scatter.update_layout(transition_duration=500)
+
+  # return two output separated by comma
+  return fig_scatter, debug_params
+# end update_
+
 
 # Run dash app
 if __name__ == "__main__":
