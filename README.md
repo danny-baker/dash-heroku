@@ -1,5 +1,5 @@
 # dash-heroku
-A running starter pack for deploying a Plotly Dash app on Heroku with support for hosting static files, such as images (a common pain point).
+A running starter pack for deploying a Plotly Dash app on Heroku with support for hosting static files, such as images (a common pain point). For a comprehensive explanatory guide, see my [article](https://medium.com/p/39bd6a0c586c) on Towards Data Science :)
 <br><br>
 
 
@@ -20,7 +20,7 @@ It's a good idea to check you can get this app running on your local webserver b
 Setup your virtualenv (or don't) and ensure you have all the modules installed before running the app. 
 
 **Getting the repo to your local machine** <br>
-If you are  new to Github and not familiar with cloning, SSH and all that jazz, you can all just download a zip file of this entire repo like a normal internet download. So that is fine to do aswell. Basically get a copy of this repo to your local machine as step 1. (Hit the green 'code' button in the top right on Github to see the options for cloning or downloading this repo). Later on when you want to make changes to your repo, you will need to use Git commands and have ssh setup, or you can use the [Github desktop](https://desktop.github.com/) application, which is really nice on Windows and Mac.
+If you are  new to Github and not familiar with cloning, SSH and all that jazz, you can all just download a zip file of this entire repo like a normal internet download. Basically get a copy of this repo to your local machine as step 1. (Hit the green 'code' button in the top right on Github to see the options for cloning or downloading this repo). Later on when you want to make changes to your repo, you will need to use Git commands and have ssh setup, or you can use the [Github desktop](https://desktop.github.com/) application, which is really nice on Windows and Mac.
 
 **Install modules from the requirements.txt** <br>
 You should be able to do this with pip3 or conda from a terminal in the project root folder
@@ -54,9 +54,9 @@ Once done, return to your terminal and it should say 'Logged in as .... blah' (G
 `heroku login`
 <br><br>
 
-## 6. Create a Heroku app linked to this Dash app
+## 6. Create a Heroku app linked to the Dash app
 
-Now we must create a Heroku app that will magically link to your Dash app. ENSURE YOU ARE IN THIS DASH PROJECT ROOT FOLDER IN A TERMINAL. Heroku docs on this step [here](https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app).
+Now we must create a Heroku app that will magically link to your Dash app. ENSURE YOU ARE IN THE DASH PROJECT ROOT FOLDER IN A TERMINAL. Heroku docs on this step [here](https://devcenter.heroku.com/articles/getting-started-with-python#deploy-the-app).
 
 `heroku create`
 
