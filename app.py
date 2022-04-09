@@ -27,10 +27,10 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 
 ## Uncomment the following line for runnning in Google Colab
-app = JupyterDash(__name__, external_stylesheets=external_stylesheets)
+#app = JupyterDash(__name__, external_stylesheets=external_stylesheets)
 
 ## Uncomment the following line for running locally in a webbrowser
-# app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 ## Uncomment the following line for other theme
 # app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
@@ -41,9 +41,10 @@ server = app.server
 ## Enable Whitenoise for serving static files from Heroku (the /static folder is seen as root by Heroku)
 server.wsgi_app = WhiteNoise(server.wsgi_app, root='static/') 
 
-# read data
+## read data
 df_country = pd.read_csv("https://raw.githubusercontent.com/smbillah/ist526/main/gapminder.csv")
 
+## creating layout
 app.layout = html.Div([
     # first row: header
   html.H4('A Sample Dashboard'),
@@ -88,8 +89,7 @@ app.layout = html.Div([
   Input('year-slider', 'value')
 )
 
-
-# update graph
+# callback function: update function
 def update_figure(selected_year, asd):
 
   # put the input parameter in debug_params variable
@@ -120,8 +120,9 @@ def update_figure(selected_year, asd):
 # end update_
 
 
-## run the code
-# uncomment the following line to run in Google Colab
+### run the code
+
+## uncomment the following line to run in Google Colab
 #app.run_server(mode='inline', port=8030)
 
 ## uncomment the following lines to run in Browser via command line/terminal
