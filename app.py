@@ -7,7 +7,7 @@ import dash
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Output, Input
-import dash_bootstrap_components as dbc
+
 
 import plotly.express as px
 import math
@@ -31,9 +31,6 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 ## Uncomment the following line for running locally in a webbrowser
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
-## Uncomment the following line for other theme
-# app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 
 ## Define the underlying flask app (Used by gunicorn webserver in Heroku production deployment)
 server = app.server 
@@ -90,7 +87,7 @@ app.layout = html.Div([
 )
 
 # callback function: update function
-def update_figure(selected_year, asd):
+def update_figure(selected_year):
 
   # put the input parameter in debug_params variable
   debug_params ='Input: {0}'.format(selected_year)
@@ -125,12 +122,12 @@ def update_figure(selected_year, asd):
 ## uncomment the following line to run in Google Colab
 #app.run_server(mode='inline', port=8030)
 
-## uncomment the following lines to run in Browser via command line/terminal
+## uncomment the following 2 lines to run locally in a Browser via command line/terminal
 #if __name__ == '__main__':
 #  app.run_server(debug=True, host='127.0.0.1', port=8000)
 
 
-## uncomment the following lines to run on heroku server
+## uncomment the following 2 lines to run remotely on heroku server
 if __name__ == "__main__":
     app.run_server(debug=False, host='0.0.0.0', port=8050)
  
