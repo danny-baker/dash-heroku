@@ -1,4 +1,4 @@
-dash==1.18.1 #This is not Dash 2.0 as it can be roblematic and is unneeded. Still problematic on firefox on linux.
+dash==1.18.1 #This is not Dash 2.0 as it can be problematic and is unneeded. Still problematic on firefox on linux.
 Werkzeug==2.0.0 #needed for Heroku due to runtime error ImportError: cannot import name 'get_current_traceback' from 'werkzeug.debug.tbtools' (StackOverflow)
 pandas==1.3.5
 matplotlib==3.5.1

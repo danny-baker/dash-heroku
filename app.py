@@ -6,7 +6,7 @@ from whitenoise import WhiteNoise   #for serving static files on Heroku
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
-from dash.dependencies import Output, Input
+#from dash.dependencies import Output, Input
 
 
 import plotly.express as px
@@ -39,7 +39,8 @@ server = app.server
 server.wsgi_app = WhiteNoise(server.wsgi_app, root='static/') 
 
 ## read data
-df_country = pd.read_csv("https://raw.githubusercontent.com/smbillah/ist526/main/gapminder.csv")
+#df_country = pd.read_csv("https://raw.githubusercontent.com/smbillah/ist526/main/gapminder.csv")
+df_country = pd.read_csv("static/gapminder.csv")
 
 ## creating layout
 app.layout = html.Div([
@@ -55,7 +56,7 @@ app.layout = html.Div([
       # add scatter plot
       dcc.Graph(
         id='scatter-graph',
-        figure=None # we'll create one inside update_figure function
+        figure=px.scatter() # we'll create one inside update_figure function
       ),
 
       # add slider
@@ -79,42 +80,42 @@ app.layout = html.Div([
   ], className = 'row')    
 ])
 
-# add callback for input. Note that we have two output: one for the figure, and another for debugging. We'll display input parameter in an html.P(id='output_text_1)
-@app.callback(
-  Output('scatter-graph', 'figure'),
-  Output('output_text_1', 'children'), #for debugging purpose
-  Input('year-slider', 'value')
-)
-
-# callback function: update function
-def update_figure(selected_year):
-
-  # put the input parameter in debug_params variable
-  debug_params ='Input: {0}'.format(selected_year)
-
-  # filter data frame based on selected_year. Note that the value of selected_year is coming from the slider
-  filtered_df = df_country[df_country.year == selected_year]
-  
-  # note that this fig is the same as HW5.Q2(a) 
-  fig_scatter = px.scatter(
-    data_frame = filtered_df, 
-    x="gdpPercap",         # gdp per capita
-    y="lifeExp",           # life expectancy  
-    size="pop",            # population
-    color="continent",     # group/label
-    hover_name="country",
-    log_x=True, 
-    size_max=55, 
-    range_x=[100,100000], 
-    range_y=[25,90],
-    title= "GDP Per Captia vs Life Expectancy of Countries",     
-  )  
-
-  # fig_scatter.update_layout(transition_duration=500)
-
-  # return two output separated by comma
-  return fig_scatter, debug_params
-# end update_
+### add callback for input. Note that we have two output: one for the figure, and another for debugging. We'll display input parameter in an html.P(id='output_text_1)
+#@app.callback(
+#  Output('scatter-graph', 'figure'),
+#  Output('output_text_1', 'children'), #for debugging purpose
+#  Input('year-slider', 'value')
+#)
+#
+## callback function: update function
+#def update_figure(selected_year):
+#
+#  # put the input parameter in debug_params variable
+#  debug_params ='Input: {0}'.format(selected_year)
+#
+#  # filter data frame based on selected_year. Note that the value of selected_year is coming from the slider
+#  filtered_df = df_country[df_country.year == selected_year]
+#
+#  # note that this fig is the same as HW5.Q2(a)
+#  fig_scatter = px.scatter(
+#    data_frame = filtered_df,
+#    x="gdpPercap",         # gdp per capita
+#    y="lifeExp",           # life expectancy
+#    size="pop",            # population
+#    color="continent",     # group/label
+#    hover_name="country",
+#    log_x=True,
+#    size_max=55,
+#    range_x=[100,100000],
+#    range_y=[25,90],
+#    title= "GDP Per Captia vs Life Expectancy of Countries",
+#  )
+#
+#  # fig_scatter.update_layout(transition_duration=500)
+#
+#  # return two output separated by comma
+#  return fig_scatter, debug_params
+### end callback function
 
 
 ### run the code
@@ -122,12 +123,12 @@ def update_figure(selected_year):
 ## uncomment the following line to run in Google Colab
 #app.run_server(mode='inline', port=8030)
 
-## uncomment the following 2 lines to run locally in a Browser via command line/terminal
-#if __name__ == '__main__':
-#  app.run_server(debug=True, host='127.0.0.1', port=8000)
+# uncomment the following 2 lines to run locally in a Browser via command line/terminal
+if __name__ == '__main__':
+  app.run_server(debug=True, host='127.0.0.1', port=8000)
 
 
 ## uncomment the following 2 lines to run remotely on heroku server
-if __name__ == "__main__":
-    app.run_server(debug=True, host='0.0.0.0')
+#if __name__ == "__main__":
+#    app.run_server(debug=True, host='0.0.0.0')
  
