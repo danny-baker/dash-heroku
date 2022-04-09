@@ -1,26 +1,44 @@
-import dash
-import dash_core_components as dcc
-import dash_bootstrap_components as dbc
-import dash_html_components as html
-import numpy as np
-import pandas as pd
-import matplotlib as mpl
-import gunicorn                     #whilst your local machine's webserver doesn't need this, Heroku's linux webserver (i.e. dyno) does
+## mandatory import for heroku (do not change)
+import gunicorn                     #needed for Heroku's linux webserver (i.e. dyno)
 from whitenoise import WhiteNoise   #for serving static files on Heroku
 
-# my header
-import plotly.express as px
+# mandatory dash import (do not change)
+import dash
+import dash_html_components as html
+import dash_core_components as dcc
+from dash.dependencies import Output, Input
+import dash_bootstrap_components as dbc
 
+import plotly.express as px
+import math
+from dash import no_update
+
+## ohter imports
+import pandas as pd
+import numpy as np
+import json
+import matplotlib as mpl
+
+## your imoprt
+# none (for now)
+
+## this css creates columns and row layout
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-## Instantiate dash app
-# app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY]) 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-# Define the underlying flask app (Used by gunicorn webserver in Heroku production deployment)
+## Uncomment the following line for runnning in Google Colab
+app = JupyterDash(__name__, external_stylesheets=external_stylesheets)
+
+## Uncomment the following line for running locally in a webbrowser
+# app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
+## Uncomment the following line for other theme
+# app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
+
+## Define the underlying flask app (Used by gunicorn webserver in Heroku production deployment)
 server = app.server 
 
-# Enable Whitenoise for serving static files from Heroku (the /static folder is seen as root by Heroku) 
+## Enable Whitenoise for serving static files from Heroku (the /static folder is seen as root by Heroku)
 server.wsgi_app = WhiteNoise(server.wsgi_app, root='static/') 
 
 # read data
@@ -102,7 +120,16 @@ def update_figure(selected_year, asd):
 # end update_
 
 
-# Run dash app
+## run the code
+# uncomment the following line to run in Google Colab
+#app.run_server(mode='inline', port=8030)
+
+## uncomment the following lines to run in Browser via command line/terminal
+#if __name__ == '__main__':
+#  app.run_server(debug=True, host='127.0.0.1', port=8000)
+
+
+## uncomment the following lines to run on heroku server
 if __name__ == "__main__":
     app.run_server(debug=False, host='0.0.0.0', port=8050)
  
