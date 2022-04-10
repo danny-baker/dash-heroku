@@ -33,7 +33,7 @@ You should be able to do this with pip3 or conda from a terminal in the project 
 
 Run the app from your IDE direct, or like a boss from the terminal: `python3 app.py`
 
-If it runs, it should be visible on a browser via `https://0.0.0.0:8050`
+If it runs, it should be visible on a browser via `http://0.0.0.0:8050`
 <br><br>
 
 ## 3. Setup Heroku command-line-interface (CLI)
