@@ -82,6 +82,11 @@ If the build succeeds, you will be given a URL at the end that might look someth
 Copy paste the URL from your OWN console output into a browser, and with a few shakes of fairy dust, your app should be live :)
 <br><br>
 
+## 9. (OPTIONAL) Transfer your own Dash app code over to the app
+
+Once you have the app running on Heroku, you can build on it as a base to get your own Dash app live on Heroku. You could fork the repository, create your own stand alone repo and copy these project files over from the directory, or do it in a variety of ways. Just be wary that Heroku can be a bit temperamental with some Python packages. Be careful of your app's RAM requirements too, remembering that you only have 500MB of memory to play with (on the free Heroku tier), far less than you might be used to on your local machine.
+<br><br>
+
 # Important Notes
 
 **Sometimes you may need to create a new Heroku app** <br>
@@ -91,7 +96,7 @@ If you make major changes to file structure in your project, you may need to cre
 Just be aware that you may not be able to use the very latest packages. I think Heroku has to add special support for this so their packages can sometimes trail the latest ones you may be running on your local machine. You will see errors if this happens though so it will be obvious when you try to build and deploy. Just watch the console.
 
 **If your build succeeds but you get 'APPLICATION ERROR' in the Browser** <br>
-This is highly annoying, but it means something went wrong after the build, when the Gunicorn webserver tried to bring up your app. To view what is going on, you can see build logs in the Heroku web dashboard (by logging in), or the most easy way is to view the live log tail from the console. This will show you the dyno web process trying to come up. And if they crash you can see what has gone wrong. Also note, this log tail will view console output from your app itself (print statements and logger statements etc) so it's a great way to get a low level view of your app, similar to when you are running it from your local machine; it just has extra stuff in it such as Heroku errors and Dyno errors mixed in aswell.
+This is highly annoying, but it means something went wrong after the build, when the Gunicorn webserver tried to bring up your app. To view what is going on at a low level the most direct way is to view the live log tail from the terminal (console). This will show you the dyno web process (i.e. Gunicorn) trying to come up. And if there is a crash you can see what has gone wrong. Also note, this log tail will view console output from your app itself (print statements and logger statements etc) so it's a great way to get a low level view of your app, similar to when you are running it from your local machine; it just has extra stuff in it such as Heroku errors and Dyno errors mixed in aswell. Just type this command into your terminal window after the build has finished.
 
 `heroku logs --tail`
 
