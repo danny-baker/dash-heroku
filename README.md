@@ -73,7 +73,7 @@ We are ready for the magic to begin. We will now do a Git push command to your r
 
 `git push heroku main`
 
-You should begin to see a bunch of console output in the terminal as Heroku deploys your app. Note it takes about 3 minutes. It should work fine on this repo, but as you add your own code in, be ready to watch for errors.
+You should begin to see a bunch of console output in the terminal as Heroku deploys your app. Note it takes about 3 minutes. It should work fine on this repo, but as you add your own code in, be ready to watch for errors. Tip: as soon as the build finishes, bring up the live log tail with `heroku logs --tail`. This will show you the processes happening immediately after the build: Gunicorn web process trying to bring up your app.
 <br><br> 
 
 ## 8. View your running public app in a browser!
