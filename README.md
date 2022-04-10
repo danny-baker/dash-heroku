@@ -84,7 +84,7 @@ Copy paste the URL from your OWN console output into a browser, and with a few s
 
 ## 9. (OPTIONAL) Transfer your own Dash app code over to the app
 
-Once you have the app running on Heroku, you can build on it as a base to get your own Dash app live. You could fork the repository, create your own stand alone repo and copy these project files over from the directory, or do it in a variety of ways. Just be wary that Heroku can be a bit temperamental with some Python packages. Be careful of your app's RAM requirements too, remembering that you only have 500MB of memory to play with (on the free Heroku tier), far less than you might be used to on your local machine.
+Once you have the app running on Heroku, you can build on it as a base to get your own Dash app live. You could fork the repository, create your own stand alone repo and copy these project files over from the directory, or do it in a variety of ways. Just be wary that Heroku can be a bit temperamental with some Python packages. Be careful of your app's RAM requirements too, remembering that you only have 500MB of memory to play with (on the free Heroku tier), far less than you might be used to compared with your local machine.
 <br><br>
 
 # Important Notes
