@@ -69,11 +69,11 @@ You may need to try a few different options to find a unique name, but once done
 
 ## 7. Deploy your app on Heroku
 
-We are ready for the magic to begin. We will now do a Git push command to your remote Heroku app repository (which lives behind the scenes) and this will trigger a build of your Heroku app!
+We are ready for the magic to begin. We will now do a Git push command to your remote Heroku app repository (which lives behind the scenes) and this will trigger a build of your Heroku app! 
 
 `git push heroku main`
 
-You should begin to see a bunch of console output in the terminal as Heroku deploys your app. It should work fine on this repo, but as you add your own code in, be ready to watch for errors.
+You should begin to see a bunch of console output in the terminal as Heroku deploys your app. Note it takes about 3 minutes. It should work fine on this repo, but as you add your own code in, be ready to watch for errors.
 <br><br> 
 
 ## 8. View your running public app in a browser!
