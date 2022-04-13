@@ -7,6 +7,17 @@ A running starter pack for deploying a Plotly Dash app on Heroku with support fo
 
 This app can be viewed live on Heroku infrastructure at [https://secret-scrubland-35610.herokuapp.com/](https://secret-scrubland-35610.herokuapp.com/)
 
+## Overview of what each file does
+
+For Heroku newbies, if this is your first attempt to get your Dash app on Heroku and you are pretending you're not scared, here is a quick fly over of all the files required. Some you will be familiar with, others look scary but they are not that bad once you know what they do.
+
+`app.py` where the dash app lives <br>
+`requirements.txt` python modules that will be installed onto the Heroku Dyno process (your linux webserver) at build <br>
+`runtime.txt` simply tells Heroku (the Gunicorn HTTP server) which Python version to use <br>
+`Procfile` tells Heroku what type of process is going to run (Gunicorn web process) and the Python app entrypoint (app.py) <br>
+`/assets` this directory is ONLY to serve the favicon icon. It cannot be used to serve any other static files <br>
+`/static` this is directory from which you can serve all your static files (note this is seen as the root folder from your Dash app) <br>
+
 ## Instructions
 
 A full step-by-step guide is provided below to help you get your first Heroku app live. 
