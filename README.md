@@ -96,19 +96,30 @@ Copy paste the URL from your OWN console output into a browser, and with a few s
 Once you have the app running on Heroku, you can build on it as a base to get your own Dash app live. You could fork the repository, create your own stand alone repo and copy these project files over from the directory, download the repo as a zip, or simply just cut-and-paste the content from each file one at a time directly from this repo on Github without downloading anything. Just be wary that Heroku can be a bit temperamental with some Python packages. Be careful of your app's RAM requirements too, remembering that you only have 500MB of memory to play with (on the free Heroku tier), far less than you might be used to compared with your local machine.
 <br><br>
 
-# Important Notes
+# Troubleshooting
 
-**Sometimes you may need to create a new Heroku app** <br>
+### Sometimes you may need to create a new Heroku app <br>
 If you make major changes to file structure in your project, you may need to create a new Heroku app with `heroku create` and then `git push heroku main`. This can be annoying but it's only one extra step. I found that once my file structure was stable, if I was just changing code within an existing file, to deploy a new version just ensure you update your remote repo on github i.e. `git push origin main` FIRST. When your remote repo is fully up to date with the latest changes, then you can redeploy to Heroku really easily with a simple `git push heroku main`
 
-**Heroku sometimes might not support the latest python modules** <br>
+### Heroku sometimes might not support the latest python modules <br>
 Just be aware that you may not be able to use the very latest packages. I think Heroku has to add special support for this so their packages can sometimes trail the latest ones you may be running on your local machine. You will see errors if this happens though so it will be obvious when you try to build and deploy. Just watch the console.
 
-**If your build succeeds but you get 'APPLICATION ERROR' in the Browser** <br>
+### If your build succeeds but you get 'APPLICATION ERROR' in the Browser <br>
 This is highly annoying, but it means something went wrong after the build, when the Gunicorn webserver tried to bring up your app. To view what is going on at a low level the most direct way is to view the live log tail from the terminal (console). This will show you the dyno web process (i.e. Gunicorn) trying to come up. And if there is a crash you can see what has gone wrong. Also note, this log tail will view console output from your app itself (print statements and logger statements etc) so it's a great way to get a low level view of your app, similar to when you are running it from your local machine; it just has extra stuff in it such as Heroku errors and Dyno errors mixed in aswell. Just type this command into your terminal window after the build has finished.
 
 `heroku logs --tail`
 
+### Memory overrun issues are common with Dash apps. Lower your web concurrency explicitly.
+One of the most common problems I had was my Dyno (Linux server) running out of memory as it tried to bring the app up. This is because Gunicorn is a production webserver, and by default will often span 6 concurrent web processes (6 instances of your app) for your Dyno to run, each requiring the full amount of RAM your app uses. When you are running your Dash app on your local machine (local webserver) only 1 web process is used. So what this means is your Dyno needs 6 x the RAM as you might think it does to run your app, and youve only got 500MB to work with. The reason this happens is so Gunicorn can manage many incoming connections (users) in parallel. It's not always obvious that the memory has run out, as the Gunicorn web process just keeps crashing before it finishes and then restarts in an infinite loop. Because Python apps are usually playing with dataframes and lots of data, I think Heroku underestimates by default how much memory they need, and the default setting of 6 instances is just too high.
 
+If you run into this problem, just manually set web concurrency in Heroku to a low number like 1, 2 or 3. Type this command into the terminal to permanently set it for your app.
+
+`heroku config:set WEB_CONCURRENCY=1` <br>
+or
+`heroku config:set WEB_CONCURRENCY=1 -a <herokuappname>` <br>
+
+You can also monitor your Dyno memory level by another command that permanently adds system metrics to the Heroku log and console output. This prints out the disk and memory level of your Dyno process to the Heroku log tail every 5 seconds.
+
+`heroku labs:enable log-runtime-metrics`
 
 
