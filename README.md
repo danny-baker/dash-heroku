@@ -122,6 +122,10 @@ You can also monitor your Dyno memory level by another command that permanently 
 
 `heroku labs:enable log-runtime-metrics`
 
+If you have a high horsepower app and a single instance requires more than 500MB RAM (e.g. you are reading more than 500MB of data into memory or doing large data operations) then you simply must scale your Dyno to a more powerful one. You will need to update your Heroku account to a paid plan, then you can scale your Dyno up. Heroku Dyno specs can be viewed [here](https://devcenter.heroku.com/articles/dyno-types). Type the command below to scale to a standard-2x Dyno with 1024MB of RAM running on a single web process.
+
+`heroku ps:scale web=1:standard-2x`
+
 ### Heroku has an immutable 30 second timeout for serving HTTP requests
 
 It’s important to be aware that Heroku has an immutable 30 second timeout for serving HTTP requests. This is a common problem especially encountered by Dash users because many of the data science applications have long load times as they build big complex charts. These might work fine running on your local host, but be aware that your Heroku deployed app MUST be able to serve within 30 seconds or it will time out. Heroku docs state a few work arounds but take special note of this problem.
