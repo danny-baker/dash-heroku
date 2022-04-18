@@ -132,6 +132,6 @@ It’s important to be aware that Heroku has an immutable 30 second timeout for 
 
 ### Bring up a bash terminal to your Heroku app
 
-If you are really struggling and confused with what is going on, note you can bring up a Bash terminal direct to your app, and see what Heroku sees. This might give you an insight for why data isn't loading or show you missing files that you can then troubleshoot for why they are not there. 
+If you are really struggling and confused with what is going on, note you can bring up a Bash terminal direct to your app, and see what Heroku sees. This might give you an insight for why data isn't loading or show you missing files that you can then troubleshoot for why they are not there. An example of where I needed to do this is my `.gitignore` was incorrectly ignoring a directory containing data I needed. The data existed on my local machine so the app worked fine, but I could not work out why it wasn't visible on Heroku (which only has what is in your remote repo on Github). By bringing up a terminal, I could see that the files were missing in the Heroku deployment, and was able to trace it back to my `.gitignore` file :) 
 
 `heroku run bash -a <yourherokuappname>`
