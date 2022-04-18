@@ -122,4 +122,12 @@ You can also monitor your Dyno memory level by another command that permanently 
 
 `heroku labs:enable log-runtime-metrics`
 
+### Heroku has an immutable 30 second timeout for serving HTTP requests
 
+It’s important to be aware that Heroku has an immutable 30 second timeout for serving HTTP requests. This is a common problem especially encountered by Dash users because many of the data science applications have long load times as they build big complex charts. These might work fine running on your local host, but be aware that your Heroku deployed app MUST be able to serve within 30 seconds or it will time out. Heroku docs state a few work arounds but take special note of this problem.
+
+### Bring up a bash terminal to your Heroku app
+
+If you are really struggling and confused with what is going on, note you can bring up a Bash terminal direct to your app, and see what Heroku sees. This might give you an insight for why data isn't loading or show you missing files that you can then troubleshoot for why they are not there. 
+
+`heroku run bash -a <yourherokuappname>`
