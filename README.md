@@ -3,7 +3,7 @@ A running starter pack for deploying a Plotly Dash app on Heroku with support fo
 <br><br>
 <img src="static/screenshot.png" width="500"/>
 
-This app can be viewed live on Heroku infrastructure at [https://secret-scrubland-35610.herokuapp.com/](https://secret-scrubland-35610.herokuapp.com/)
+This app can be viewed live on Heroku infrastructure at [https://serene-dusk-42485.herokuapp.com/](https://serene-dusk-42485.herokuapp.com/)
 
 ## Overview of what each file does
 
@@ -87,7 +87,7 @@ You should begin to see a bunch of console output in the terminal as Heroku depl
 
 ## 8. View your running public app in a browser!
 
-If the build succeeds, you will be given a URL at the end that might look something like [https://secret-scrubland-35610.herokuapp.com/](https://secret-scrubland-35610.herokuapp.com/) (this is live so you can see the app deployed). 
+If the build succeeds, you will be given a URL at the end that might look something like [https://serene-dusk-42485.herokuapp.com/](https://serene-dusk-42485.herokuapp.com/) (this is live so you can see the app deployed). 
 Copy paste the URL from your OWN console output into a browser, and with a few shakes of fairy dust, your app should be live :)
 <br><br>
 
@@ -135,3 +135,17 @@ It’s important to be aware that Heroku has an immutable 30 second timeout for 
 If you are really struggling and confused with what is going on, note you can bring up a Bash terminal direct to your app, and see what Heroku sees. This might give you an insight for why data isn't loading or show you missing files that you can then troubleshoot for why they are not there. An example of where I needed to do this is my `.gitignore` was incorrectly ignoring a directory containing data I needed. The data existed on my local machine so the app worked fine locally, but I could not work out why it wasn't working on Heroku (which only has what is in your remote repo on Github). By bringing up a terminal, I could see that the files were missing in the Heroku deployment, and was able to trace it back to my `.gitignore` file :) 
 
 `heroku run bash -a <yourherokuappname>`
+
+### Heroku isnt building the right app when you do a `git push heroku main` or you get a fatal error
+
+If you start playing around with successive Heroku apps, sometimes the Heroku remote repository (the one that actually builds to your running app) gets decoupled from the local repository (or heroku app) you are working on, or it stays linked to a previous heroku app you no longer want to use. This can be frustrating, but you can easily fix it to a specific heroku app you want.
+
+After you have built a heroku app linked to you local repo with `heroku create`, list your available apps with `heroku apps`. Enusre you know the heroku app name you want actually deployed.
+
+Check your git remote repos with `git remote -v` 
+
+If the heroku remote has a different app name to the one you want, simply replace it with:
+
+`heroku git:remote -a <herokuappname>`
+
+This binds the heroku remote to the heroku app you actually want to deploy. Then you can just type `git push heroku main` and you know exactly which app is being deployed. Note this hopefully won't happen to you, but invariably you can run into these kind of glitchy things when playing around with lots of different heroku apps as you try to get your Dash app deployed.
