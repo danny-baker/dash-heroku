@@ -15,6 +15,7 @@ For Heroku newbies, if this is your first attempt to get your Dash app on Heroku
 `Procfile` tells Heroku what type of process is going to run (Gunicorn web process) and the Python app entrypoint (app.py) <br>
 `/assets` this directory is ONLY to serve the favicon icon. It cannot be used to serve any other static files <br>
 `/static` this is the directory from which you can serve all your static files (note this is seen as the root folder from your Dash app) <br>
+`.gitignore` file telling git which files and directories to ignore when pushing to the remote repositories <br>
 
 ## Instructions
 
