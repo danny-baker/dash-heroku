@@ -1,7 +1,5 @@
-import dash
-import dash_core_components as dcc
+from dash import Dash, callback, html, dcc
 import dash_bootstrap_components as dbc
-import dash_html_components as html
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
@@ -9,9 +7,9 @@ import gunicorn                     #whilst your local machine's webserver doesn
 from whitenoise import WhiteNoise   #for serving static files on Heroku
 
 # Instantiate dash app
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.FLATLY] ) 
+app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 
-# Define the underlying flask app (Used by gunicorn webserver in Heroku production deployment)
+# Reference the underlying flask app (Used by gunicorn webserver in Heroku production deployment)
 server = app.server 
 
 # Enable Whitenoise for serving static files from Heroku (the /static folder is seen as root by Heroku) 
@@ -21,7 +19,7 @@ server.wsgi_app = WhiteNoise(server.wsgi_app, root='static/')
 def create_dash_layout(app):
 
     # Set browser tab title
-    app.title = "Your app title" #browser tab
+    app.title = "Your app title" 
     
     # Header
     header = html.Div([html.Br(), dcc.Markdown(""" # Hi. I'm your Dash app."""), html.Br()])
