@@ -1,5 +1,5 @@
 # dash-heroku
-A running starter pack for deploying a Plotly Dash app on Heroku with support for hosting static files, such as images (a common pain point). For a comprehensive explanatory guide, see my [article](https://medium.com/p/39bd6a0c586c) on Towards Data Science :)
+A running starter pack for deploying a Plotly Dash app on Heroku with support for hosting static files, such as images (a common pain point). For a comprehensive explanatory guide with jokes, see my [article](https://medium.com/p/39bd6a0c586c) on Towards Data Science :)
 <br><br>
 <img src="static/screenshot.png" width="500"/>
 
@@ -140,7 +140,7 @@ If you are really struggling and confused with what is going on, note you can br
 
 If you start playing around with successive Heroku apps, sometimes the Heroku remote repository (the one that actually builds to your running app) gets decoupled from the local repository (or heroku app) you are working on, or it stays linked to a previous heroku app you no longer want to use. This can be frustrating, but you can easily fix it to a specific heroku app you want.
 
-After you have built a heroku app linked to you local repo with `heroku create`, list your available apps with `heroku apps`. Enusre you know the heroku app name you want actually deployed.
+After you have built a heroku app linked to you local repo with `heroku create`, list your available apps with `heroku apps`. Ensure you know the heroku app name you want actually deployed.
 
 Check your git remote repos with `git remote -v` 
 
