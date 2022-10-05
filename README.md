@@ -123,7 +123,7 @@ You can also monitor your Dyno memory level by another command that permanently 
 
 `heroku labs:enable log-runtime-metrics`
 
-If you have a high horsepower app and a single instance requires more than 500MB RAM (e.g. you are reading more than 500MB of data into memory or doing large data operations) then you simply must scale your Dyno to a more powerful one. You will need to update your Heroku account to a paid plan, then you can scale your Dyno up. Heroku Dyno specs can be viewed [here](https://devcenter.heroku.com/articles/dyno-types). Type the command below to scale to a standard-2x Dyno with 1024MB of RAM running on a single web process.
+If you have a high horsepower app and a single instance requires more than 500MB RAM (e.g. you are reading more than 500MB of data into memory or doing large data operations) then you simply must scale your Dyno to a more powerful one. You will need to update your Heroku account to a paid plan, then you can scale your Dyno up. Heroku Dyno specs can be viewed [here](https://devcenter.heroku.com/articles/dyno-types). Type the command below to scale to a standard-2x Dyno with 1024MB of RAM running on a single web process. If that's still not enough for you, then it might be time to consider going to dedicated virtual machine hardware, but that is a different story and not covered in this tutorial.
 
 `heroku ps:scale web=1:standard-2x`
 
